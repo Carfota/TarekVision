@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinematic Portfolio | معرض أعمال التصوير</title>
+  <style>
+    :root {
+      --bg-color: #0c0d10;
+      --card-bg: #14161d;
+      --accent: #c5a059; /* لون ذهبي برونزي فاخر */
+      --text: #f0f2f5;
+      --text-muted: #8e95a5;
+      --border: #232733;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    header {
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: rgba(12, 13, 16, 0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 40px 8% 80px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      border-right: 4px solid var(--accent);
+      padding-right: 12px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .gallery-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: scale 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      scale: 1.05;
+    }
+
+    .item-info {
+      padding: 15px 20px;
+    }
+
+    .item-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .item-info span {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--card-bg);
+      padding: 80px 8%;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #0f1015;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .contact-container p {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: #171922;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #0c0d10;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: scale(1.01);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">LENS & VISION</div>
+    <nav>
+      <a href="#gallery">المعرض</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>CAPTURE THE UNSEEN</h1>
+    <p>معرض أعمال التصوير الاحترافي والسينمائي بعدسات وإضاءات متقنة.</p>
+  </section>
+
+  <section class="gallery-section" id="gallery">
+    <h2 class="section-title">أحدث الأعمال</h2>
+    <div class="gallery-grid">
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Camera Shot">
+        <div class="item-info">
+          <h3>سلسلة كاميرات الشارع</h3>
+          <span>Sony A7IV • 35mm f/1.4</span>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Cinematic Portrait">
+        <div class="item-info">
+          <h3>بورتريه سينمائي</h3>
+          <span>Canon R5 • 85mm f/1.2</span>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80" alt="Vintage Lens">
+        <div class="item-info">
+          <h3>عدسات كلاسيكية</h3>
+          <span>Fujifilm X-T4 • 50mm f/2.0</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <h2>CONTACT US</h2>
+      <p>لحجز تركيب كاميرات او الاستعلام من فضلك ادخل المعلومات الاتية</p>
+
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        
+        <div class="form-group">
+          <label for="name">YOUR NAME (الاسم)</label>
+          <input type="text" id="name" name="name" placeholder="أدخل اسمك بالكامل" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">PHONE NUMBER (رقم الهاتف)</label>
+          <input type="tel" id="phone" name="phone" placeholder="01xxxxxxxxx" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description">DESCRIPTION (تفاصيل الطلب / الرسالة)</label>
+          <textarea id="description" name="description" rows="5" placeholder="اكتب تفاصيل المشروع أو نوع التصوير المطلوب..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">إرسال الرسالة</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>جميع الحقوق محفوظه  لشركة طارق </p>
+  </footer>
+
+</body>
+</html>
